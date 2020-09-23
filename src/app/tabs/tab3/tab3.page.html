@@ -1,0 +1,56 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <!-- <ion-title>
+      Seriados
+    </ion-title> -->
+    <ion-searchbar placeholder="Buscar Seriados" (ionInput)="buscarSeriadosPorTitulo($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let seriado of listaSeriados; let i = index">
+
+        <ion-card *ngIf="seriado.poster_path" class="card-seriados" [ngStyle]="{
+          background: 'url('+ urlImagens + seriado.poster_path + ') center',
+          'background-size': '145px'
+        }">
+          <ion-card-header class="ion-text-right">
+            <ion-badge color="primary" class="radius-badge"
+            [routerLink]="['/tabs/tab3/visualizar-seriado', seriado?.id]">
+              <ion-icon class="icon-detalhes" name="add-outline"></ion-icon>
+            </ion-badge>
+          </ion-card-header>
+        </ion-card>
+
+        <ion-card *ngIf="seriado.poster_path == null" class="card-seriados" [ngStyle]="{
+          background: 'url(assets/img/sem_imagem_1.jpg) center',
+          'background-size': '145px'
+        }">
+          <ion-card-header class="ion-text-right">
+            <ion-badge color="primary" class="radius-badge"
+            [routerLink]="['/tabs/tab3/visualizar-seriado', seriado?.id]">
+              <ion-icon class="icon-detalhes" name="add-outline"></ion-icon>
+            </ion-badge>
+          </ion-card-header>
+        </ion-card>
+       
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Carregando...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,81 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{temporada?.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" *ngIf="temporada">
+
+  <ion-card>
+    <img *ngIf="temporada?.poster_path" [src]="urlImagens + temporada?.poster_path" />
+    <img *ngIf="temporada?.poster_path == null" src="assets/img/sem_imagem_1.jpg" />
+
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-text color="success">
+          <h6>Ano temporada: {{temporada?.air_date | date:'y' }}</h6>
+        </ion-text>
+
+        <ion-text color="warning" *ngIf="tempFinalizada">
+          <h6>Todos os episódios foram assistidos!</h6>
+        </ion-text>
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <div *ngFor="let video of temporada.videos.results">
+        <a *ngIf="video.site == 'YouTube'" class="pagina-oficial" href="http://www.youtube.com/watch?v={{video.key}}"
+          target="_blank">
+          <ion-icon name="film-outline" slot="start"></ion-icon>
+          {{video.name}}
+        </a>
+
+        <a *ngIf="video.site == 'Vimeo'" class="pagina-oficial" href="https://vimeo.com/{{video.key}}" target="_blank">
+          <ion-icon name="film-outline" slot="start"></ion-icon>
+          {{video.name}}
+        </a>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-list>
+      <ion-item *ngFor="let ep of temporada.episodes">
+        <ion-icon 
+          slot="end" 
+          name="eye-off" 
+          *ngIf="!ep.assistido"
+          (click)="addVisualizado(ep.id)">
+        </ion-icon>
+
+        <ion-icon 
+          slot="end" 
+          name="eye" 
+          color="warning"
+          *ngIf="ep.assistido"
+          (click)="removeVisualizado(ep.id)">
+        </ion-icon>
+
+        <ion-avatar slot="start" *ngIf="ep.still_path">
+          <img [src]="urlImagens + ep?.still_path">
+        </ion-avatar>
+
+        <ion-avatar slot="start" *ngIf="ep.still_path == null && temporada?.poster_path">
+          <img [src]="urlImagens + temporada?.poster_path">
+        </ion-avatar>
+
+        <ion-avatar slot="start" *ngIf="ep.still_path == null && temporada?.poster_path == null">
+          <img src="assets/img/sem_imagem_1.jpg">
+        </ion-avatar>
+
+        <ion-label (click)="showDetalhes(ep)">
+          <h2>Ep: {{ep.name}}</h2>
+          <p>{{ep.overview}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>

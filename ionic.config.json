@@ -1,0 +1,7 @@
+{
+  "name": "assistiFilmesSeries",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

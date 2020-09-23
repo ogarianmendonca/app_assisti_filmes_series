@@ -1,0 +1,132 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{seriado?.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" *ngIf="seriado">
+  <ion-card>
+    <img *ngIf="seriado?.backdrop_path" [src]="urlImagens + seriado?.backdrop_path" />
+    <img *ngIf="seriado?.backdrop_path == null" src="assets/img/sem_imagem_2.jpg" />
+
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <!-- ADICIONAR AOS FAVORITOS -->
+        <ion-col size="3" *ngFor="let favorito of favoritos">
+          <ion-button *ngIf="favorito.seriadoId != seriado.id" expand="block" color="light"
+            (click)="addFavorito(seriado.id, seriado.name, seriado.poster_path)">
+            <ion-icon slot="icon-only" name="star"></ion-icon>
+          </ion-button>
+
+          <ion-button *ngIf="favorito.seriadoId == seriado.id" expand="block" color="light"
+            (click)="removeFavorito(seriado.id)">
+            <ion-icon slot="icon-only" name="star" color="warning"></ion-icon>
+          </ion-button>
+        </ion-col>
+
+        <!-- GOSTEI -->
+        <ion-col size="3" *ngFor="let like of likes">
+          <ion-button *ngIf="like.seriadoId != seriado.id" expand="block" color="light"
+            (click)="addLike(seriado.id, seriado.name)">
+            <ion-icon slot="icon-only" name="thumbs-up"></ion-icon>
+          </ion-button>
+
+          <ion-button *ngIf="like.seriadoId == seriado.id" expand="block" color="light" (click)="removeLike(seriado.id)">
+            <ion-icon slot="icon-only" name="thumbs-up" color="warning"></ion-icon>
+          </ion-button>
+        </ion-col>
+
+        <!-- NÃO GOSTEI -->
+        <ion-col size="3" *ngFor="let deslike of deslikes">
+          <ion-button *ngIf="deslike.seriadoId != seriado.id" expand="block" color="light"
+            (click)="addDeslike(seriado.id, seriado.name)">
+            <ion-icon slot="icon-only" name="thumbs-down"></ion-icon>
+          </ion-button>
+
+          <ion-button *ngIf="deslike.seriadoId == seriado.id" expand="block" color="light"
+            (click)="removeDeslike(seriado.id)">
+            <ion-icon slot="icon-only" name="thumbs-down" color="danger"></ion-icon>
+          </ion-button>
+        </ion-col>
+
+        <!-- ASSISTIDO -->
+        <ion-col size="3" *ngFor="let visualizado of visualizados">
+          <ion-button *ngIf="visualizado.seriadoId != seriado.id" expand="block" color="light"
+            (click)="addVisualizado(seriado.id, seriado.name, seriado.poster_path)">
+            <ion-icon slot="icon-only" name="eye-off"></ion-icon>
+          </ion-button>
+
+          <ion-button *ngIf="visualizado.seriadoId == seriado.id" expand="block" color="light"
+            (click)="removeVisualizado(seriado.id)">
+            <ion-icon slot="icon-only" name="eye" color="warning"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-card-header>
+      <ion-card-subtitle>Ano 1ª temporada: {{seriado?.first_air_date | date:'y' }}</ion-card-subtitle>
+      <ion-card-title>{{seriado?.name}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <div>
+        {{seriado?.overview}}
+      </div>
+
+      <br>
+      <ion-row>
+        <ion-col *ngFor="let genero of seriado?.genres">
+          <ion-badge color="dark">{{genero.name}}</ion-badge>
+        </ion-col>
+      </ion-row>
+
+      <br>
+      <a class="pagina-oficial" [href]="seriado.homepage" target="_blank">
+        <ion-icon name="tv-outline" slot="start"></ion-icon>
+        Página oficial
+      </a>
+
+      <div *ngFor="let video of seriado.videos.results">
+        <a *ngIf="video.site == 'YouTube'" class="pagina-oficial"
+          href="http://www.youtube.com/watch?v={{video.key}}" target="_blank">
+          <ion-icon name="film-outline" slot="start"></ion-icon>
+          {{video.name}}
+        </a>
+
+        <a *ngIf="video.site == 'Vimeo'" class="pagina-oficial" href="https://vimeo.com/{{video.key}}" target="_blank">
+          <ion-icon name="film-outline" slot="start"></ion-icon>
+          {{video.name}}
+        </a>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-list *ngFor="let temporada of seriado.seasons">
+      <ion-item-sliding>
+        <ion-item [routerLink]="['/tabs/tab3/visualizar-temporada', seriado?.id, temporada?.season_number]">
+          <ion-avatar slot="start" *ngIf="temporada.poster_path">
+            <img [src]="urlImagens + temporada?.poster_path">
+          </ion-avatar>
+
+          <ion-avatar slot="start" *ngIf="temporada.poster_path == null && seriado?.backdrop_path">
+            <img [src]="urlImagens + seriado?.backdrop_path">
+          </ion-avatar>
+
+          <ion-avatar slot="start" *ngIf="temporada.poster_path == null && seriado?.backdrop_path == null">
+            <img src="assets/img/sem_imagem_1.jpg">
+          </ion-avatar>
+
+          <ion-label>
+            <h2>{{temporada.name}}</h2>
+            <h3>{{temporada.episode_count}} episódios</h3>
+          </ion-label>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-list>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,107 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{filme?.title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" *ngIf="filme">
+  <ion-card>
+    <img *ngIf="filme?.backdrop_path" [src]="urlImagens + filme?.backdrop_path"  alt=""/>
+    <img *ngIf="filme?.backdrop_path == null" src="assets/img/sem_imagem_2.jpg"  alt=""/>
+
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <!-- ADICIONAR AOS FAVORITOS -->
+        <ion-col size="3" *ngFor="let favorito of favoritos">
+          <ion-button *ngIf="favorito.filmeId != filme.id" expand="block" color="light"
+            (click)="addFavorito(filme.id, filme.title, filme.poster_path)">
+            <ion-icon slot="icon-only" name="star"></ion-icon>
+          </ion-button>
+
+          <ion-button *ngIf="favorito.filmeId == filme.id" expand="block" color="light"
+            (click)="removeFavorito(filme.id)">
+            <ion-icon slot="icon-only" name="star" color="warning"></ion-icon>
+          </ion-button>
+        </ion-col>
+
+        <!-- GOSTEI -->
+        <ion-col size="3" *ngFor="let like of likes">
+          <ion-button *ngIf="like.filmeId != filme.id" expand="block" color="light"
+            (click)="addLike(filme.id, filme.title)">
+            <ion-icon slot="icon-only" name="thumbs-up"></ion-icon>
+          </ion-button>
+
+          <ion-button *ngIf="like.filmeId == filme.id" expand="block" color="light" (click)="removeLike(filme.id)">
+            <ion-icon slot="icon-only" name="thumbs-up" color="warning"></ion-icon>
+          </ion-button>
+        </ion-col>
+
+        <!-- NÃO GOSTEI -->
+        <ion-col size="3" *ngFor="let deslike of deslikes">
+          <ion-button *ngIf="deslike.filmeId != filme.id" expand="block" color="light"
+            (click)="addDeslike(filme.id, filme.title)">
+            <ion-icon slot="icon-only" name="thumbs-down"></ion-icon>
+          </ion-button>
+
+          <ion-button *ngIf="deslike.filmeId == filme.id" expand="block" color="light"
+            (click)="removeDeslike(filme.id)">
+            <ion-icon slot="icon-only" name="thumbs-down" color="danger"></ion-icon>
+          </ion-button>
+        </ion-col>
+
+        <!-- ASSISTIDO -->
+        <ion-col size="3" *ngFor="let visualizado of visualizados">
+          <ion-button *ngIf="visualizado.filmeId != filme.id" expand="block" color="light"
+            (click)="addVisualizado(filme.id, filme.title, filme.poster_path)">
+            <ion-icon slot="icon-only" name="eye-off"></ion-icon>
+          </ion-button>
+
+          <ion-button *ngIf="visualizado.filmeId == filme.id" expand="block" color="light"
+            (click)="removeVisualizado(filme.id)">
+            <ion-icon slot="icon-only" name="eye" color="warning"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-card-header>
+      <ion-card-subtitle>Ano de Lançamento: {{filme?.release_date | date:'y' }}</ion-card-subtitle>
+      <ion-card-title>{{filme?.title}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <div>
+        {{filme?.overview}}
+      </div>
+
+      <br>
+      <ion-row>
+        <ion-col *ngFor="let genero of filme?.genres">
+          <ion-badge color="dark">{{genero.name}}</ion-badge>
+        </ion-col>
+      </ion-row>
+
+      <br>
+      <a *ngIf="filme.homepage" class="pagina-oficial" [href]="filme.homepage" target="_blank">
+        <ion-icon name="tv-outline" slot="start"></ion-icon>
+        Página oficial
+      </a>
+
+      <div *ngFor="let video of filme.videos.results">
+        <a *ngIf="video.site == 'YouTube'" class="pagina-oficial"
+          href="http://www.youtube.com/watch?v={{video.key}}&feature=youtu.be" target="_blank">
+          <ion-icon name="film-outline" slot="start"></ion-icon>
+          {{video.name}}
+        </a>
+
+        <a *ngIf="video.site == 'Vimeo'" class="pagina-oficial" href="https://vimeo.com/{{video.key}}" target="_blank">
+          <ion-icon name="film-outline" slot="start"></ion-icon>
+          {{video.name}}
+        </a>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
