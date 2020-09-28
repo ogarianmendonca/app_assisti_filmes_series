@@ -16,12 +16,12 @@
       <ion-row class="ion-align-items-center">
         <!-- ADICIONAR AOS FAVORITOS -->
         <ion-col size="3" *ngFor="let favorito of favoritos">
-          <ion-button *ngIf="favorito.filmeId != filme.id" expand="block" color="light"
+          <ion-button shape="round" *ngIf="favorito.filmeId != filme.id" expand="block" color="light"
             (click)="addFavorito(filme.id, filme.title, filme.poster_path)">
             <ion-icon slot="icon-only" name="star"></ion-icon>
           </ion-button>
 
-          <ion-button *ngIf="favorito.filmeId == filme.id" expand="block" color="light"
+          <ion-button shape="round" *ngIf="favorito.filmeId == filme.id" expand="block" color="light"
             (click)="removeFavorito(filme.id)">
             <ion-icon slot="icon-only" name="star" color="warning"></ion-icon>
           </ion-button>
@@ -29,24 +29,24 @@
 
         <!-- GOSTEI -->
         <ion-col size="3" *ngFor="let like of likes">
-          <ion-button *ngIf="like.filmeId != filme.id" expand="block" color="light"
+          <ion-button shape="round" *ngIf="like.filmeId != filme.id" expand="block" color="light"
             (click)="addLike(filme.id, filme.title)">
             <ion-icon slot="icon-only" name="thumbs-up"></ion-icon>
           </ion-button>
 
-          <ion-button *ngIf="like.filmeId == filme.id" expand="block" color="light" (click)="removeLike(filme.id)">
+          <ion-button shape="round" *ngIf="like.filmeId == filme.id" expand="block" color="light" (click)="removeLike(filme.id)">
             <ion-icon slot="icon-only" name="thumbs-up" color="warning"></ion-icon>
           </ion-button>
         </ion-col>
 
         <!-- NÃO GOSTEI -->
         <ion-col size="3" *ngFor="let deslike of deslikes">
-          <ion-button *ngIf="deslike.filmeId != filme.id" expand="block" color="light"
+          <ion-button shape="round" *ngIf="deslike.filmeId != filme.id" expand="block" color="light"
             (click)="addDeslike(filme.id, filme.title)">
             <ion-icon slot="icon-only" name="thumbs-down"></ion-icon>
           </ion-button>
 
-          <ion-button *ngIf="deslike.filmeId == filme.id" expand="block" color="light"
+          <ion-button shape="round" *ngIf="deslike.filmeId == filme.id" expand="block" color="light"
             (click)="removeDeslike(filme.id)">
             <ion-icon slot="icon-only" name="thumbs-down" color="danger"></ion-icon>
           </ion-button>
@@ -54,12 +54,12 @@
 
         <!-- ASSISTIDO -->
         <ion-col size="3" *ngFor="let visualizado of visualizados">
-          <ion-button *ngIf="visualizado.filmeId != filme.id" expand="block" color="light"
+          <ion-button shape="round" *ngIf="visualizado.filmeId != filme.id" expand="block" color="light"
             (click)="addVisualizado(filme.id, filme.title, filme.poster_path)">
             <ion-icon slot="icon-only" name="eye-off"></ion-icon>
           </ion-button>
 
-          <ion-button *ngIf="visualizado.filmeId == filme.id" expand="block" color="light"
+          <ion-button shape="round" *ngIf="visualizado.filmeId == filme.id" expand="block" color="light"
             (click)="removeVisualizado(filme.id)">
             <ion-icon slot="icon-only" name="eye" color="warning"></ion-icon>
           </ion-button>

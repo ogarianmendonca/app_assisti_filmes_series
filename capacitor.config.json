@@ -1,15 +1,22 @@
 {
   "appId": "assisti.filmes.series",
-  "appName": "assistiFilmesSeries",
+  "appName": "Assisti Filmes e Series",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
   "plugins": {
     "SplashScreen": {
-      "launchShowDuration": 0,
+      "launchShowDuration": 3000,
+      "launchAutoHide": true,
+      "backgroundColor": "#01172e",
+      "androidSplashResourceName": "splash",
+      "androidScaleType": "CENTER_CROP",
+      "androidSpinnerStyle": "large",
+      "iosSpinnerStyle": "small",
+      "spinnerColor": "#009688",
       "showSpinner": true,
-      "spinnerColor": "#00bcd4",
-      "backgroundColor": "#183331"
+      "splashFullScreen": true,
+      "splashImmersive": true
     }
   },
   "cordova": {}
