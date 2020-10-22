@@ -12,7 +12,6 @@
       "androidSplashResourceName": "splash",
       "androidScaleType": "CENTER_CROP",
       "androidSpinnerStyle": "large",
-      "iosSpinnerStyle": "small",
       "spinnerColor": "#009688",
       "showSpinner": true,
       "splashImmersive": true

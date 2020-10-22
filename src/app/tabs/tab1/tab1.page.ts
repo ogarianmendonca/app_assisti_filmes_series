@@ -72,5 +72,7 @@ export class Tab1Page {
           this.isRefreshing = false;
         }
       });
+
+    this.loadingService.hideLoading();
   }
 }
