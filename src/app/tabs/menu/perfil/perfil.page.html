@@ -45,6 +45,11 @@
       <ion-text [hidden]="user?.status == true" color="danger">
         Usuário Inativo
       </ion-text>
+
+      <br>
+      <ion-button (click)="showAlert()" class="btn-excluir-conta" type="submit" size="small" shape="round" color="danger">
+        Excluir conta
+      </ion-button>
     </ion-card-content>
   </ion-card>
 

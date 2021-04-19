@@ -27,6 +27,10 @@ export class UsuarioService {
     return this.http.put<Usuario>(this.urlApiUsuario + 'editar/' + id, dados, httpOptions);
   }
 
+  excluirPerfil(id): Observable<any>{
+    return this.http.delete<any>(this.urlApiUsuario + 'excluir-perfil/' + id);
+  }
+
   uploadImagem(arquivo) {
     const formData = new FormData();
     formData.append('imagem', arquivo[0]);

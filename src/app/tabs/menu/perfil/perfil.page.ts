@@ -5,6 +5,8 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoadingsService } from 'src/app/services/loadings.service';
 import { ToastsService } from 'src/app/services/toasts.service';
+import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil',
@@ -22,7 +24,9 @@ export class PerfilPage implements OnInit {
     private usuarioService: UsuarioService,
     private formBuilder: FormBuilder,
     private loadingsService: LoadingsService,
-    private toastsService: ToastsService
+    private toastsService: ToastsService,
+    private alertController: AlertController,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -90,5 +94,42 @@ export class PerfilPage implements OnInit {
         });
       });
     }
+  }
+
+  showAlert() {
+    this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Atenção!',
+      message: "Tem certeza de que deseja excluir permanentemente sua conta? <br>Não poderemos restaurar sua conta depois de excluí-la.",
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary'
+        }, {
+          text: 'Sim',
+          handler: () => {
+            this.excluirPerfil();
+          }
+        }
+      ]
+    }).then(resp => {
+      resp.present();
+    });
+  }
+
+  excluirPerfil() {
+    this.loadingsService.sairLoading();
+
+    this.usuarioService.excluirPerfil(this.user.id).subscribe((resp: Usuario) => {
+      this.toastsService.showToastSuccess('Perfil excluído com sucesso!');
+
+      localStorage.clear();
+      this.router.navigate(['auth/login']);
+      this.loadingsService.hideLoading();
+    }, (err) => {
+      this.toastsService.showToastWarning('Erro ao excluir perfil!');
+      this.loadingsService.hideLoading();
+    });
   }
 }
