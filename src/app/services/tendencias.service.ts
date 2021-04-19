@@ -11,9 +11,6 @@ export class TendenciasService {
 
   constructor(public http: HttpClient) { }
 
-  /**
-   * Busca por filmes e seriados lançamentos
-   */
   buscarTendencias(paginaMovies = 1) {
     return this.http.get<any>(this.baseApi + this.apiKey + '&page=' + paginaMovies);
   }

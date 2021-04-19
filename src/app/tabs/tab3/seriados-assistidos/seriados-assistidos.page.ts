@@ -25,9 +25,6 @@ export class SeriadosAssistidosPage implements OnInit {
     this.buscaSeriadosAssistidos();
   }
 
-  /**
-   * Busca seriados assistidos
-   */
   buscaSeriadosAssistidos() {
     var usuario = this.authService.getUsuarioStorage();
     var arr = JSON.parse(localStorage.getItem('seriadosVisualizados'));

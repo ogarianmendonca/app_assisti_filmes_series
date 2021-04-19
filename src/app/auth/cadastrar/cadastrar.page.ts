@@ -28,9 +28,6 @@ export class CadastrarPage implements OnInit {
     this.validaFormulario();
   }
 
-  /**
-   * Preenche e valida formulário
-   */
   validaFormulario() {
     this.formularioUsuario = this.formBuilder.group({
       name: ['', [Validators.required]],
@@ -41,9 +38,6 @@ export class CadastrarPage implements OnInit {
     });
   }
 
-  /**
-   * Cadastra usuário
-   */
   cadastrarUsuario() {
     this.loadingsService.showLoading();
 
@@ -63,9 +57,6 @@ export class CadastrarPage implements OnInit {
     });
   }
 
-  /**
-   * Encaminha para a tela de login
-   */
   login() {
     this.router.navigate(['auth/login']);
   }

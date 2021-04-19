@@ -12,32 +12,20 @@ export class SeriadosService {
 
   constructor(public http: HttpClient) { }
 
-  /**
-   * Busca seriados populares
-   */
   buscarSeriados(paginaMovies = 1) {
     return this.http.get<any>(this.baseApi + 'popular' + this.apiKey + '&page=' + paginaMovies);
   }
 
-  /**
-   * Busca seriado por id
-   */
   buscarSeriadoSelecionado(id) {
     return this.http.get<any>(this.baseApi + id + this.apiKey + '&append_to_response=videos');
   }
 
-  /**
-   * Busca temporada por id do seriado e por id da temprada
-   */
   buscarTemporadaSelecionada(id, temp) {
     return this.http.get<any>(
       this.baseApi + id + '/season/' + temp + this.apiKey + '&append_to_response=videos'
     );
   }
 
-  /**
-   * Busca seriados por título
-   */
   buscarSeriadosPorTitulo(titulo) {
     return this.http.get<any>(this.baseApiSearch + this.apiKey + '&query=' + titulo + '&page=1&include_adult=false');
   }

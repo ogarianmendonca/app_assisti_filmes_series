@@ -10,9 +10,6 @@ export class LoadingsService {
 
   constructor(private loadingController: LoadingController) { }
 
-  /**
-   * Mostra loading Carregando
-   */
   async showLoading() {
     this.carregando = true;
     await this.loadingController.create({
@@ -27,9 +24,6 @@ export class LoadingsService {
     });
   }
 
-  /**
-   * Mostra loading Sair
-   */
   async sairLoading() {
     this.carregando = true;
     await this.loadingController.create({
@@ -44,9 +38,6 @@ export class LoadingsService {
     });
   }
 
-  /**
-   * Fecha o loading
-   */
   async hideLoading() {
     this.carregando = false;
     return await this.loadingController.getTop().then(resp => {

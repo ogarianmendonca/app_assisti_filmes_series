@@ -33,9 +33,6 @@ export class VisualizarFilmePage implements OnInit {
     this.buscaVisualizados();
   }
 
-  /**
-   * Busca filme selecionado.
-   */
   buscarFilmeSelecionado() {
     this.loadingsService.showLoading();
     var id = this.routerActivated.snapshot.params['id'];
@@ -47,12 +44,6 @@ export class VisualizarFilmePage implements OnInit {
       });
   }
 
-  /**
-   * Adiciona aos favoritos
-   * @param id
-   * @param titulo
-   * @param poster
-   */
   addFavorito(id, titulo, poster) {
     var novoFavorito = [];
 
@@ -84,9 +75,6 @@ export class VisualizarFilmePage implements OnInit {
     }
   }
 
-  /**
-   * Busca favorito
-   */
   buscaFavorito() {
     if (localStorage.getItem('filmesFavoritos')) {
       var id = this.routerActivated.snapshot.params['id'];
@@ -109,9 +97,6 @@ export class VisualizarFilmePage implements OnInit {
     }
   }
 
-  /**
-   * Remove favorito
-   */
   removeFavorito(id) {
     var arr = JSON.parse(localStorage.getItem('filmesFavoritos'));
     var novoFavorito = [];
@@ -129,9 +114,6 @@ export class VisualizarFilmePage implements OnInit {
     this.buscaFavorito();
   }
 
-  /**
-   * Marca como "gostei"
-   */
   addLike(id, titulo) {
     var novoLike = [];
 
@@ -163,9 +145,6 @@ export class VisualizarFilmePage implements OnInit {
     }
   }
 
-  /**
-   * Busca "gostei"
-   */
   buscarLike() {
     if (localStorage.getItem('likesFilmes')) {
       var id = this.routerActivated.snapshot.params['id'];
@@ -188,9 +167,6 @@ export class VisualizarFilmePage implements OnInit {
     }
   }
 
-  /**
-   * Remove "gostei"
-   */
   removeLike(id) {
     if (localStorage.getItem('likesFilmes')) {
       var arr = JSON.parse(localStorage.getItem('likesFilmes'));
@@ -210,9 +186,6 @@ export class VisualizarFilmePage implements OnInit {
     this.buscarLike();
   }
 
-  /**
-   * Marca como "não gostei"
-   */
   addDeslike(id, titulo) {
     var novoDeslike = [];
 
@@ -244,9 +217,6 @@ export class VisualizarFilmePage implements OnInit {
     }
   }
 
-  /**
-   * Busca "não gostei"
-   */
   buscarDeslike() {
     if (localStorage.getItem('deslikesFilmes')) {
       var id = this.routerActivated.snapshot.params['id'];
@@ -269,9 +239,6 @@ export class VisualizarFilmePage implements OnInit {
     }
   }
 
-  /**
-   * Remove "não gostei"
-   */
   removeDeslike(id) {
     if (localStorage.getItem('deslikesFilmes')) {
       var arr = JSON.parse(localStorage.getItem('deslikesFilmes'));
@@ -292,9 +259,6 @@ export class VisualizarFilmePage implements OnInit {
     this.buscarDeslike();
   }
 
-  /**
-   * Adiciona aos visualizados
-   */
   addVisualizado(id, titulo, poster) {
     var novoVisualizado = [];
 
@@ -326,9 +290,6 @@ export class VisualizarFilmePage implements OnInit {
     }
   }
 
-  /**
-   * Busca visualizado
-   */
   buscaVisualizados() {
     if (localStorage.getItem('filmesVisualizados')) {
       var id = this.routerActivated.snapshot.params['id'];
@@ -351,9 +312,6 @@ export class VisualizarFilmePage implements OnInit {
     }
   }
 
-  /**
-   * Remove visualizado
-   */
   removeVisualizado(id) {
     var arr = JSON.parse(localStorage.getItem('filmesVisualizados'));
     var novoVisualizado = [];

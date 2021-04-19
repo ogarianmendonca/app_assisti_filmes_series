@@ -12,23 +12,14 @@ export class FilmesService {
 
   constructor(public http: HttpClient) { }
 
-  /**
-   * Busca por filmes populares
-   */
   buscarFilmes(paginaMovies = 1) {
     return this.http.get<any>(this.baseApi + 'popular' + this.apiKey + '&page=' + paginaMovies);
   }
 
-  /**
-   * Busca filme por id
-   */
   buscarFilmeSelecionado(id) {
     return this.http.get<any>(this.baseApi + id + this.apiKey + '&append_to_response=videos');
   }
 
-  /**
-   * Busca o filme por título
-   */
   buscarFilmesPorTitulo(titulo) {
     return this.http.get<any>(this.baseApiSearch + this.apiKey + '&query=' + titulo + '&page=1&include_adult=false');
   }

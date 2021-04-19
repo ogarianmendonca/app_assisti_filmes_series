@@ -9,9 +9,6 @@ export class AppErrorHandle extends ErrorHandler {
         super();
     }
 
-    /**
-     * Tratamento de erros de retorno do backend
-     */
     handleError(errorResponse: HttpErrorResponse | any) {
         if (errorResponse instanceof HttpErrorResponse) {
             if (errorResponse.status === 401 && errorResponse.statusText === 'Unauthorized') {
@@ -40,9 +37,6 @@ export class AppErrorHandle extends ErrorHandler {
         super.handleError(errorResponse);
     }
 
-    /**
-     * Redireciona para a tela de login
-     */
     redirecionaLogin(): void {
         window.location.reload();
         const router = this.injector.get(Router);

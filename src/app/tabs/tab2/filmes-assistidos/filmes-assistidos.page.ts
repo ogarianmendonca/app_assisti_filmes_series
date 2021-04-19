@@ -25,9 +25,6 @@ export class FilmesAssistidosPage implements OnInit {
     this.buscaFilmesAssistidos();
   }
 
-  /**
-   * Busca filmes assistidos
-   */
   buscaFilmesAssistidos() {
     var usuario = this.authService.getUsuarioStorage();
     var arr = JSON.parse(localStorage.getItem('filmesVisualizados'));

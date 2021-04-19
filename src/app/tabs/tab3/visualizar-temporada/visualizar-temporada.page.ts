@@ -32,9 +32,6 @@ export class VisualizarTemporadaPage implements OnInit {
     this.buscarTemporadaSelecionado();
   }
 
-  /**
-   * Busca temporada selecionada.
-   */
   buscarTemporadaSelecionado() {
     this.loadingsService.showLoading();
     this.seriadoId = this.routerActivated.snapshot.params['id'];
@@ -48,16 +45,10 @@ export class VisualizarTemporadaPage implements OnInit {
       });
   }
 
-  /**
-   * Mostra alerta detalhes
-   */
   showDetalhes(dadosEp) {
     this.alertasService.showDetalhesEp(dadosEp.name, dadosEp.overview);
   }
 
-  /**
-   * Adiciona aos visualizados
-   */
   addVisualizado(id) {
     var novoVisualizado = [];
 
@@ -89,9 +80,6 @@ export class VisualizarTemporadaPage implements OnInit {
     this.buscaVisualizados();
   }
 
-  /**
-   * Busca visualizados
-   */
   buscaVisualizados() {
     if (localStorage.getItem('episodiosVisualizados')) {
       var arr = JSON.parse(localStorage.getItem('episodiosVisualizados'));
@@ -121,9 +109,6 @@ export class VisualizarTemporadaPage implements OnInit {
     }
   }
 
-  /**
-   * Remove visualizados
-   */
   removeVisualizado(id) {
     if (localStorage.getItem('episodiosVisualizados')) {
       var arr = JSON.parse(localStorage.getItem('episodiosVisualizados'));
@@ -145,9 +130,6 @@ export class VisualizarTemporadaPage implements OnInit {
     }
   }
 
-  /**
-   * Faz a contagem de eps assistidos
-   */
   contaEpsAssistidos() {
     if (localStorage.getItem('episodiosVisualizados')) {
       var arr = JSON.parse(localStorage.getItem('episodiosVisualizados'));

@@ -25,9 +25,6 @@ export class FilmesFavoritosPage implements OnInit {
     this.buscaFilmesFavoritos();
   }
 
-  /**
-   * Busca filmes favoritos
-   */
   buscaFilmesFavoritos() {
     var usuario = this.authService.getUsuarioStorage();
     var arr = JSON.parse(localStorage.getItem('filmesFavoritos'));

@@ -29,9 +29,6 @@ export class AuthPage implements OnInit {
     });
   }
 
-  /**
-   * Efetua Login
-   */
   logar() {
     this.loadingsService.showLoading();
 
@@ -54,9 +51,6 @@ export class AuthPage implements OnInit {
     );
   }
 
-  /**
-   * Encaminha para a tela de cadastro
-   */
   novoCadastro() {
     this.router.navigate(['auth/cadastrar']);
   }

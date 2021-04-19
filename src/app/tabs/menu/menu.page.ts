@@ -26,25 +26,25 @@ export class MenuPage implements OnInit {
     this.atualizaUsuarioLogado();
   }
 
-  /**
-   * Busca dados usuário logado
-   */
   buscarUsuarioLogado() {
     this.loadingsService.showLoading();
 
-    this.authService.getUsuarioAutenticado()
-    .subscribe((resp: any) => {
+    this.authService.getUsuarioAutenticado().subscribe((resp: any) => {
       this.user = resp.usuario;
       this.loadingsService.hideLoading();
     }, (error: any) => {
+      if (error.status == 401) {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        this.router.navigate(['auth/login']);
+        this.loadingsService.hideLoading();
+      }
+
       this.loadingsService.hideLoading();
       this.toastsService.showToastWarning('Não foi possível carregar a página!');
     });
   }
 
-  /**
-   * Atualiza dados do usuário logado quando o perfil for editado
-   */
   atualizaUsuarioLogado() {
     this.authService.atualizarPerfil
     .subscribe((resp: Usuario) => {
@@ -55,9 +55,6 @@ export class MenuPage implements OnInit {
     });
   }
 
-  /**
-   * Logout
-   */
   logout(e) {
     this.loadingsService.sairLoading();
     e.preventDefault();

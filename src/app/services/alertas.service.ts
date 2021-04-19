@@ -8,9 +8,6 @@ export class AlertasService {
 
   constructor(private alertController: AlertController) { }
 
-  /**
-   * Mostra alerta com mensagem
-   */
   showAlert(mensagem: string) {
     this.alertController.create({
       cssClass: 'my-custom-class',
@@ -22,9 +19,6 @@ export class AlertasService {
     });
   }
 
-  /**
-   * Mostra detalhes episódios de seriados
-   */
   showDetalhesEp(titulo: string, descricao: string) {
     this.alertController.create({
       cssClass: 'my-custom-class',

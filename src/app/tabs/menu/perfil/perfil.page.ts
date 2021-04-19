@@ -29,9 +29,6 @@ export class PerfilPage implements OnInit {
     this.buscarUsuarioLogado();
   }
 
-  /**
-   * Busca dados de usuario logado
-   */
   buscarUsuarioLogado() {
     this.loadingsService.showLoading();
 
@@ -43,9 +40,6 @@ export class PerfilPage implements OnInit {
       });
   }
 
-  /**
-   * Preenche e valida formulário
-   */
   validaFormulario(user) {
     this.formularioUsuario = this.formBuilder.group({
       name: [user.name, [Validators.required]],
@@ -58,16 +52,10 @@ export class PerfilPage implements OnInit {
     });
   }
 
-  /**
-   * Carrega imagem
-   */
   carregarImagem(event: any) {
     this.imagem = event.target.files;
   }
 
-  /**
-   * Edita usuário logado
-   */
   editarUsuario() {
     this.loadingsService.showLoading();
 

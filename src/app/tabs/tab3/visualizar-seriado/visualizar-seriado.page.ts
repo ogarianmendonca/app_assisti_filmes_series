@@ -33,9 +33,6 @@ export class VisualizarSeriadoPage implements OnInit {
     this.buscaVisualizados();
   }
 
-  /**
-   * Busca seriado selecionado.
-   */
   buscarSeriadoSelecionado() {
     this.loadingsService.showLoading();
     var id = this.routerActivated.snapshot.params['id'];
@@ -47,9 +44,6 @@ export class VisualizarSeriadoPage implements OnInit {
       });
   }
 
-  /**
-   * Adiciona aos favoritos
-   */
   addFavorito(id, titulo, poster) {
     var novoFavorito = [];
 
@@ -81,9 +75,6 @@ export class VisualizarSeriadoPage implements OnInit {
     }
   }
 
-  /**
-   * Busca favorito
-   */
   buscaFavorito() {
     if (localStorage.getItem('seriadosFavoritos')) {
       var id = this.routerActivated.snapshot.params['id'];
@@ -106,9 +97,6 @@ export class VisualizarSeriadoPage implements OnInit {
     }
   }
 
-  /**
-   * Remove favorito
-   */
   removeFavorito(id) {
     var arr = JSON.parse(localStorage.getItem('seriadosFavoritos'));
     var novoFavorito = [];
@@ -126,9 +114,6 @@ export class VisualizarSeriadoPage implements OnInit {
     this.buscaFavorito();
   }
 
-  /**
-   * Marca como "gostei"
-   */
   addLike(id, titulo) {
     var novoLike = [];
 
@@ -160,9 +145,6 @@ export class VisualizarSeriadoPage implements OnInit {
     }
   }
 
-  /**
-   * Busca "gostei"
-   */
   buscarLike() {
     if (localStorage.getItem('likesSeriados')) {
       var id = this.routerActivated.snapshot.params['id'];
@@ -185,9 +167,6 @@ export class VisualizarSeriadoPage implements OnInit {
     }
   }
 
-  /**
-   * Remove "gostei"
-   */
   removeLike(id) {
     if (localStorage.getItem('likesSeriados')) {
       var arr = JSON.parse(localStorage.getItem('likesSeriados'));
@@ -207,9 +186,6 @@ export class VisualizarSeriadoPage implements OnInit {
     this.buscarLike();
   }
 
-  /**
-   * Marca como "não gostei"
-   */
   addDeslike(id, titulo) {
     var novoDeslike = [];
 
@@ -241,9 +217,6 @@ export class VisualizarSeriadoPage implements OnInit {
     }
   }
 
-  /**
-   * Busca "não gostei"
-   */
   buscarDeslike() {
     if (localStorage.getItem('deslikesSeriados')) {
       var id = this.routerActivated.snapshot.params['id'];
@@ -266,9 +239,6 @@ export class VisualizarSeriadoPage implements OnInit {
     }
   }
 
-  /**
-   * Remove "não gostei"
-   */
   removeDeslike(id) {
     if (localStorage.getItem('deslikesSeriados')) {
       var arr = JSON.parse(localStorage.getItem('deslikesSeriados'));
@@ -289,9 +259,6 @@ export class VisualizarSeriadoPage implements OnInit {
     this.buscarDeslike();
   }
 
-  /**
-   * Adiciona aos visualizados
-   */
   addVisualizado(id, titulo, poster) {
     var novoVisualizado = [];
 
@@ -323,9 +290,6 @@ export class VisualizarSeriadoPage implements OnInit {
     }
   }
 
-  /**
-   * Busca visualizado
-   */
   buscaVisualizados() {
     if (localStorage.getItem('seriadosVisualizados')) {
       var id = this.routerActivated.snapshot.params['id'];
@@ -348,9 +312,6 @@ export class VisualizarSeriadoPage implements OnInit {
     }
   }
 
-  /**
-   * Remove visualizado
-   */
   removeVisualizado(id) {
     var arr = JSON.parse(localStorage.getItem('seriadosVisualizados'));
     var novoVisualizado = [];

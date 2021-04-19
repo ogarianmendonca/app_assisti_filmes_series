@@ -25,27 +25,18 @@ export class Tab1Page {
     this.buscarTendencias();
   }
 
-  /**
-   * Refresh
-   */
   doRefresh(event) {
     this.refresher = event;
     this.isRefreshing = true;
     this.buscarTendencias();
   }
 
-  /**
-   * Load
-   */
   loadData(event) {
     this.paginaTendencias++;
     this.infiniteScroll = event;
     this.buscarTendencias(true);
   }
 
-  /**
-   * Busca filmes
-   */
   buscarTendencias(novaPagina: boolean = false) {
     this.loadingService.showLoading();
 

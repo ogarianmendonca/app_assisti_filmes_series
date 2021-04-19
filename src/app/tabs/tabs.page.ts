@@ -12,5 +12,4 @@ export class TabsPage {
 
   ngOnInit() {
   }
-
 }

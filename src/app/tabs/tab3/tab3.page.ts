@@ -27,27 +27,18 @@ export class Tab3Page {
     this.buscarSeriados();
   }
 
-  /**
-   * Refresh
-   */
   doRefresh(event) {
     this.refresher = event;
     this.isRefreshing = true;
     this.buscarSeriados();
   }
 
-  /**
-   * Load
-   */
   loadData(event) {
     this.paginaSeriados++;
     this.infiniteScroll = event;
     this.buscarSeriados(true);
   }
 
-  /**
-   * Busca seriados
-   */
   buscarSeriados(novaPagina: boolean = false) {
     this.loadingService.showLoading();
 
@@ -76,9 +67,6 @@ export class Tab3Page {
       });
   }
 
-  /**
-   * Busca seriados por título
-   */
   buscarSeriadosPorTitulo(event) {
     if (event.target.value.length > 3) {
       this.seriadosService.buscarSeriadosPorTitulo(event.target.value).subscribe(

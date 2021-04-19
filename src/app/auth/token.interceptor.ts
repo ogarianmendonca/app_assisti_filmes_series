@@ -5,9 +5,6 @@ import { environment } from 'src/environments/environment';
 
 @Injectable()
 
-/**
- * Inclui o token nas chamadas das APIs
- */
 export class TokenInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const requestUrl: Array<any> = request.url.split('/');

@@ -25,9 +25,6 @@ export class SeriadosFavoritosPage implements OnInit {
     this.buscaSeriadosFavoritos();
   }
 
-  /**
-   * Busca seriados favoritos
-   */
   buscaSeriadosFavoritos() {
     var usuario = this.authService.getUsuarioStorage();
     var arr = JSON.parse(localStorage.getItem('seriadosFavoritos'));

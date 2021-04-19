@@ -27,27 +27,18 @@ export class Tab2Page {
     this.buscarFilmes();
   }
 
-  /**
-   * Refresh
-   */
   doRefresh(event) {
     this.refresher = event;
     this.isRefreshing = true;
     this.buscarFilmes();
   }
 
-  /**
-   * Load
-   */
   loadData(event) {
     this.paginaFilmes++;
     this.infiniteScroll = event;
     this.buscarFilmes(true);
   }
 
-  /**
-   * Busca filmes
-   */
   buscarFilmes(novaPagina: boolean = false) {
     this.loadingService.showLoading();
 
@@ -76,9 +67,6 @@ export class Tab2Page {
       });
   }
 
-  /**
-   * Busca filmes por título
-   */
   buscarFilmesPorTitulo(event) {
     if (event.target.value.length > 3) {
       this.filmesService.buscarFilmesPorTitulo(event.target.value).subscribe(
