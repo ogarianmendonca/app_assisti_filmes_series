@@ -19,10 +19,11 @@ export class VisualizarFilmePage implements OnInit {
   public visualizados: any;
   public usuario = this.authService.getUsuarioStorage();
 
-  constructor(private filmesService: FilmesService,
-              private loadingsService: LoadingsService,
-              private routerActivated: ActivatedRoute,
-              private authService: AuthService
+  constructor(
+    private filmesService: FilmesService,
+    private loadingsService: LoadingsService,
+    private routerActivated: ActivatedRoute,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
