@@ -52,7 +52,14 @@ export class CadastrarPage implements OnInit {
       this.loadingsService.hideLoading();
       this.router.navigate(['auth/login']);
     }, (error) => {
-      this.toastsService.showToastWarning(error.error[0]);
+      console.log(error);
+      
+      if (error.statusText == 'Unknown Error') {
+        this.toastsService.showToastWarning("Ocorreu um erro. Tente novamente mais tarde.");
+      } else {
+        this.toastsService.showToastWarning(error.error.message + ' <br>Já existe uma conta com o e-mail informado.');
+      }
+
       this.loadingsService.hideLoading();
     });
   }
