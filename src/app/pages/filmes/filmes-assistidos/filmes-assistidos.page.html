@@ -12,7 +12,7 @@
 <ion-content [fullscreen]="true">
   <ion-list *ngFor="let filme of assistidos">
     <ion-item-sliding>
-      <ion-item [routerLink]="['/tabs/tab2/visualizar-filme', filme?.filmeId]">
+      <ion-item [routerLink]="['/tabs/pages/filmes/visualizar-filme', filme?.filmeId]">
         <ion-avatar slot="start">
           <img [src]="urlImagens + filme?.poster" alt="">
         </ion-avatar>

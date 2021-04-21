@@ -3,9 +3,6 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <!-- <ion-title>
-      Filmes
-    </ion-title> -->
     <ion-searchbar placeholder="Buscar Filmes" (ionInput)="buscarFilmesPorTitulo($event)"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
@@ -25,7 +22,7 @@
         }">
           <ion-card-header class="ion-text-right">
             <ion-badge color="primary" class="radius-badge"
-            [routerLink]="['/tabs/tab2/visualizar-filme', movie?.id]">
+            [routerLink]="['/tabs/pages/filmes/visualizar-filme', movie?.id]">
               <ion-icon class="icon-detalhes" name="add-outline"></ion-icon>
             </ion-badge>
           </ion-card-header>
@@ -37,7 +34,7 @@
         }">
           <ion-card-header class="ion-text-right">
             <ion-badge color="primary" class="radius-badge"
-            [routerLink]="['/tabs/tab2/visualizar-filme', movie?.id]">
+            [routerLink]="['/tabs/pages/filmes/visualizar-filme', movie?.id]">
               <ion-icon class="icon-detalhes" name="add-outline"></ion-icon>
             </ion-badge>
           </ion-card-header>

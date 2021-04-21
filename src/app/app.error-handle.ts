@@ -32,6 +32,10 @@ export class AppErrorHandle extends ErrorHandler {
                 error.error === 'token_not_provided')) {
                 this.redirecionaLogin();
             }
+
+            if (errorResponse.statusText == 'Unknown Error') {
+                this.redirecionaLogin();
+            }
         }
 
         super.handleError(errorResponse);

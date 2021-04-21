@@ -24,12 +24,12 @@
         }">
           <ion-card-header class="ion-text-right">
             <ion-badge *ngIf="tendencia.media_type == 'movie'" color="primary" class="radius-badge"
-            [routerLink]="['/tabs/tab2/visualizar-filme', tendencia?.id]">
+            [routerLink]="['/tabs/pages/filmes/visualizar-filme', tendencia?.id]">
               <ion-icon class="icon-detalhes" name="add-outline"></ion-icon>
             </ion-badge>
 
             <ion-badge *ngIf="tendencia.media_type == 'tv'" color="primary" class="radius-badge"
-            [routerLink]="['/tabs/tab3/visualizar-seriado', tendencia?.id]">
+            [routerLink]="['/tabs/pages/seriados/visualizar-seriado', tendencia?.id]">
               <ion-icon class="icon-detalhes" name="add-outline"></ion-icon>
             </ion-badge>
           </ion-card-header>

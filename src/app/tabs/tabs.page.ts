@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
-import { Usuario } from '../models/usuario';
 import { AuthService } from '../services/auth.service';
 
 @Component({

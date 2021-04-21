@@ -1,20 +1,20 @@
-import { PerfilPage } from './perfil/perfil.page';
-import { MenuRoutingModule } from './menu-routing.module';
+import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PagesRoutingModule } from './pages-routing.module';
+import { PerfilPage } from './perfil/perfil.page';
 
 @NgModule({
   imports: [
     IonicModule,
-    FormsModule,
     CommonModule,
-    MenuRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
+    PagesRoutingModule,
   ],
   declarations: [
-    PerfilPage
+    PerfilPage,
   ]
 })
-export class MenuModule { }
+export class PagesModule {}

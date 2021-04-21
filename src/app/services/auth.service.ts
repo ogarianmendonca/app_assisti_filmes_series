@@ -31,7 +31,7 @@ export class AuthService {
   }
 
   getUsuarioAutenticado(): Observable<Usuario> {
-    return this.http.get<Usuario>(environment.api_url + 'api/usuario/getUser')
+    return this.http.get<Usuario>(environment.api_url + 'api/usuario/get-user')
       .pipe(tap(
         (resp: any) => {
           localStorage.setItem('user', btoa(JSON.stringify(resp.usuario)));

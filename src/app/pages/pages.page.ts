@@ -1,17 +1,16 @@
-import { ToastsService } from 'src/app/services/toasts.service';
-import { Component, OnInit } from '@angular/core';
-import { Usuario } from 'src/app/models/usuario';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
-import { LoadingsService } from 'src/app/services/loadings.service';
+import { Usuario } from '../models/usuario';
+import { AuthService } from '../services/auth.service';
+import { LoadingsService } from '../services/loadings.service';
+import { ToastsService } from '../services/toasts.service';
 
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.page.html',
-  styleUrls: ['./menu.page.scss']
+  selector: 'app-pages',
+  templateUrl: 'pages.page.html',
+  styleUrls: ['./pages.page.scss']
 })
-export class MenuPage implements OnInit {
-
+export class PagesPage {
   user: Usuario;
 
   constructor(

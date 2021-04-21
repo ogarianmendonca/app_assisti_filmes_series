@@ -12,7 +12,7 @@
 <ion-content [fullscreen]="true">
   <ion-list *ngFor="let seriado of assistidos">
     <ion-item-sliding>
-      <ion-item [routerLink]="['/tabs/tab3/visualizar-seriado', seriado?.seriadoId]">
+      <ion-item [routerLink]="['/tabs/pages/seriados/visualizar-seriado', seriado?.seriadoId]">
         <ion-avatar slot="start">
           <img [src]="urlImagens + seriado?.poster">
         </ion-avatar>

@@ -108,7 +108,7 @@
   <ion-card>
     <ion-list *ngFor="let temporada of seriado.seasons">
       <ion-item-sliding>
-        <ion-item [routerLink]="['/tabs/tab3/visualizar-temporada', seriado?.id, temporada?.season_number]">
+        <ion-item [routerLink]="['/tabs/pages/seriados/visualizar-temporada', seriado?.id, temporada?.season_number]">
           <ion-avatar slot="start" *ngIf="temporada.poster_path">
             <img [src]="urlImagens + temporada?.poster_path">
           </ion-avatar>

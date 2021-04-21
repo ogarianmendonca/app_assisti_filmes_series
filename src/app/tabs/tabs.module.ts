@@ -1,4 +1,3 @@
-import { MenuPage } from './menu/menu.page';
 import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -6,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { TabsPageRoutingModule } from './tabs-routing.module';
 
 import { TabsPage } from './tabs.page';
+import { PagesPage } from '../pages/pages.page';
 
 @NgModule({
   imports: [
@@ -16,7 +16,7 @@ import { TabsPage } from './tabs.page';
   ],
   declarations: [
     TabsPage,
-    MenuPage
+    PagesPage
   ]
 })
 export class TabsPageModule {}
