@@ -100,7 +100,7 @@ export class PerfilPage implements OnInit {
     this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Atenção!',
-      message: "Tem certeza de que deseja excluir permanentemente sua conta? <br>Não poderemos restaurar sua conta depois de excluí-la.",
+      message: "Tem certeza de que deseja excluir definitivamente sua conta? <br>Não poderemos restaurar sua conta depois de excluí-la.",
       buttons: [
         {
           text: 'Cancelar',
