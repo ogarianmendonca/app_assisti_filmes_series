@@ -1,10 +1,14 @@
-# Ionic 5 | App Mobile
+# Projeto Assisti Filmes & Series
 
-### Observações:
-1- npm install (Para gerar a pasta node_modules) \
-2- ionic serve (Para executar o app no navegador) \
-3- ionic build \
-4- ionic capacitor add android \
-5- Em android/app/src/main/AndroidManifest.xml remover permissões (Deixar apenas o da Internet) \
-6- Copiar as artes dentro de arts_for_android para dentro de android/app/src/main/res
+Projeto Livre - Aplicativo móvel com Ionic 5 e Angular 9 
+Ionic 5 | App Mobile
+
+#### Instruções
+    1- Conexão com banco de dados em src/environments/*
+    2- npm install
+    3- ionic serve
+    4- ionic build
+    5- ionic capacitor add android
+    6- Em android/app/src/main/AndroidManifest.xml remover permissões (OBS: Deixar apenas a permissão da Internet)
+    7- Copiar as artes dentro de arts_for_android para dentro de android/app/src/main/res
 
