@@ -1,7 +1,6 @@
 # Projeto Assisti Filmes & Series
 
-Projeto Livre - Aplicativo móvel com Ionic 5 e Angular 9 
-Ionic 5 | App Mobile
+Projeto Livre - Aplicativo móvel com Ionic 5 e Angular 9
 
 #### Instruções
     1- Conexão com banco de dados em src/environments/*
