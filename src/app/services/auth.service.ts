@@ -42,4 +42,18 @@ export class AuthService {
   getUsuarioStorage(): Usuario {
     return localStorage.getItem('user') ? JSON.parse(atob(localStorage.getItem('user'))) : null;
   }
+
+  getCredenciais(): any {
+    return localStorage.getItem('auto_login') ? JSON.parse(atob(localStorage.getItem('auto_login'))) : null;
+  }
+
+  setCredenciais(dados: { email: string, password: string }): any {
+    localStorage.setItem('auto_login', btoa(JSON.stringify(dados)));
+  }
+
+  removeItensStorage(): any {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    localStorage.removeItem('auto_login');
+  }
 }

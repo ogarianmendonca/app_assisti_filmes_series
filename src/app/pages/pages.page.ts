@@ -58,8 +58,7 @@ export class PagesPage {
     this.loadingsService.sairLoading();
     e.preventDefault();
     this.authService.logout().subscribe(resp => {
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
+      this.authService.removeItensStorage();
       this.router.navigate(['auth/login']);
       this.loadingsService.hideLoading();
     });

@@ -25,8 +25,20 @@ export class AuthPage implements OnInit {
   ngOnInit() {
     this.formulario = this.formBuilder.group({
       email: [null, [Validators.required, Validators.email]],
-      password: [null, [Validators.required]]
+      password: [null, [Validators.required]],
+      save_login: [null]
     });
+
+    this.saveLogin();
+  }
+
+  saveLogin() {
+    if (this.authService.getCredenciais()?.save_login) {
+      this.formulario.controls['email'].setValue(this.authService.getCredenciais()?.email);
+      this.formulario.controls['password'].setValue(this.authService.getCredenciais()?.password);
+
+      this.logar();
+    }
   }
 
   logar() {
@@ -36,6 +48,10 @@ export class AuthPage implements OnInit {
       (response) => {
         this.loadingsService.hideLoading();
         this.router.navigate(['/tabs/tab1']);
+
+        if (this.formulario.value.save_login) {
+          this.authService.setCredenciais(this.formulario.value);
+        }
       }, (errorResponse: HttpErrorResponse) => {
         if (errorResponse.error.message === 'Usuário inativo!') {
           this.loadingsService.hideLoading();

@@ -20,6 +20,11 @@
           <ion-input type="password" formControlName="password"></ion-input>
         </ion-item>
 
+        <ion-item>
+          <ion-label>Salvar?</ion-label>
+          <ion-checkbox color="success" slot="end" formControlName="save_login"></ion-checkbox>
+        </ion-item>
+
         <br>
         <ion-button shape="round" color="success" expand="full" [disabled]="formulario.invalid" (click)="logar()">
           Entrar

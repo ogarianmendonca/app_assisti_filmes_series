@@ -52,8 +52,6 @@ export class CadastrarPage implements OnInit {
       this.loadingsService.hideLoading();
       this.router.navigate(['auth/login']);
     }, (error) => {
-      console.log(error);
-      
       if (error.statusText == 'Unknown Error') {
         this.toastsService.showToastWarning("Ocorreu um erro. Tente novamente mais tarde.");
       } else {

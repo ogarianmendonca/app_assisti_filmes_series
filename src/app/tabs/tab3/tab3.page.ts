@@ -71,7 +71,6 @@ export class Tab3Page {
     if (event.target.value.length > 3) {
       this.seriadosService.buscarSeriadosPorTitulo(event.target.value).subscribe(
         response => {
-          console.log(response);
           this.listaSeriados = response.results;
         }, error => {
           this.toastsService.showToastWarning('Houve um erro!')
