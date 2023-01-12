@@ -15,31 +15,14 @@
   <ion-grid>
     <ion-row>
       <ion-col size="6" *ngFor="let seriado of listaSeriados; let i = index">
-
-        <ion-card *ngIf="seriado.poster_path" class="card-seriados" [ngStyle]="{
-          background: 'url('+ urlImagens + seriado.poster_path + ') center',
-          'background-size': '145px'
-        }">
-          <ion-card-header class="ion-text-right">
-            <ion-badge color="primary" class="radius-badge"
-              [routerLink]="['/tabs/pages/seriados/visualizar-seriado', seriado?.id]">
-              <ion-icon class="icon-detalhes" name="add-outline"></ion-icon>
-            </ion-badge>
-          </ion-card-header>
-        </ion-card>
-
-        <ion-card *ngIf="seriado.poster_path == null" class="card-seriados" [ngStyle]="{
-          background: 'url(assets/img/sem_imagem_1.jpg) center',
-          'background-size': '145px'
-        }">
-          <ion-card-header class="ion-text-right">
-            <ion-badge color="primary" class="radius-badge"
-              [routerLink]="['/tabs/pages/seriados/visualizar-seriado', seriado?.id]">
-              <ion-icon class="icon-detalhes" name="add-outline"></ion-icon>
-            </ion-badge>
-          </ion-card-header>
-        </ion-card>
-       
+        <app-card-principal
+          posterPath="{{seriado.poster_path}}"
+          urlImagens="{{urlImagens}}"
+          id="{{seriado?.id}}"
+          pages="seriados"
+          action="visualizar-seriado"
+        >          
+        </app-card-principal>
       </ion-col>
     </ion-row>
   </ion-grid>

@@ -10,4 +10,3 @@ Projeto Livre - Aplicativo móvel com Ionic 5 e Angular 9
     5- ionic capacitor add android
     6- Em android/app/src/main/AndroidManifest.xml remover permissões (OBS: Deixar apenas a permissão da Internet)
     7- Copiar as artes dentro de arts_for_android para dentro de android/app/src/main/res
-

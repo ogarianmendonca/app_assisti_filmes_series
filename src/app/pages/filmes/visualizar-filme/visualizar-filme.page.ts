@@ -2,7 +2,8 @@ import { AuthService } from '../../../services/auth.service';
 import { LoadingsService } from '../../../services/loadings.service';
 import { FilmesService } from 'src/app/services/filmes.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-visualizar-filme',
@@ -23,7 +24,7 @@ export class VisualizarFilmePage implements OnInit {
     private filmesService: FilmesService,
     private loadingsService: LoadingsService,
     private routerActivated: ActivatedRoute,
-    private authService: AuthService
+    private authService: AuthService,
   ) { }
 
   ngOnInit() {

@@ -15,31 +15,15 @@
   <ion-grid>
     <ion-row>
       <ion-col size="6" *ngFor="let movie of listaFilmes; let i = index">
-
-        <ion-card *ngIf="movie.poster_path" class="card-filmes" [ngStyle]="{
-          background: 'url('+ urlImagens + movie.poster_path + ') center',
-          'background-size': '145px'
-        }">
-          <ion-card-header class="ion-text-right">
-            <ion-badge color="primary" class="radius-badge"
-            [routerLink]="['/tabs/pages/filmes/visualizar-filme', movie?.id]">
-              <ion-icon class="icon-detalhes" name="add-outline"></ion-icon>
-            </ion-badge>
-          </ion-card-header>
-        </ion-card>
-
-        <ion-card *ngIf="movie.poster_path == null" class="card-filmes" [ngStyle]="{
-          background: 'url(assets/img/sem_imagem_1.jpg) center',
-          'background-size': '145px'
-        }">
-          <ion-card-header class="ion-text-right">
-            <ion-badge color="primary" class="radius-badge"
-            [routerLink]="['/tabs/pages/filmes/visualizar-filme', movie?.id]">
-              <ion-icon class="icon-detalhes" name="add-outline"></ion-icon>
-            </ion-badge>
-          </ion-card-header>
-        </ion-card>
-       
+        <app-card-principal
+          posterPath="{{movie.poster_path}}"
+          urlImagens="{{urlImagens}}"
+          id="{{movie?.id}}"
+          pages="filmes"
+          action="visualizar-filme"
+          urlOrigem="{{urlOrigem}}"
+        >          
+        </app-card-principal>
       </ion-col>
     </ion-row>
   </ion-grid>

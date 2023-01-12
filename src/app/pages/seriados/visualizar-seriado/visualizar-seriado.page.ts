@@ -18,6 +18,7 @@ export class VisualizarSeriadoPage implements OnInit {
   public deslikes: any;
   public visualizados: any;
   public usuario = this.authService.getUsuarioStorage();
+  public seriadoId: number;
 
   constructor(private seriadosService: SeriadosService,
               private loadingsService: LoadingsService,
@@ -35,13 +36,13 @@ export class VisualizarSeriadoPage implements OnInit {
 
   buscarSeriadoSelecionado() {
     this.loadingsService.showLoading();
-    var id = this.routerActivated.snapshot.params['id'];
+    this.seriadoId = this.routerActivated.snapshot.params['id'];
 
-    this.seriadosService.buscarSeriadoSelecionado(id)
+    this.seriadosService.buscarSeriadoSelecionado(this.seriadoId)
       .subscribe((resp: any) => {
         this.seriado = resp;
         this.loadingsService.hideLoading();
-      });
+      });      
   }
 
   addFavorito(id, titulo, poster) {

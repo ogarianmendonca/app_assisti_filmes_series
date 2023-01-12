@@ -17,6 +17,7 @@ export class VisualizarTemporadaPage implements OnInit {
   public temporada: any;
   public usuario = this.authService.getUsuarioStorage();
   public seriadoId: number;
+  public seasonNumber: number;
   public temporadaId: number;
   public tempFinalizada: boolean = false;
 
@@ -35,11 +36,12 @@ export class VisualizarTemporadaPage implements OnInit {
   buscarTemporadaSelecionado() {
     this.loadingsService.showLoading();
     this.seriadoId = this.routerActivated.snapshot.params['id'];
-    this.temporadaId = this.routerActivated.snapshot.params['temp'];
+    this.seasonNumber = this.routerActivated.snapshot.params['temp'];
 
-    this.seriadosService.buscarTemporadaSelecionada(this.seriadoId,  this.temporadaId)
+    this.seriadosService.buscarTemporadaSelecionada(this.seriadoId,  this.seasonNumber)
       .subscribe((resp: any) => {
         this.temporada = resp;
+        this.temporadaId = resp.id;
         this.loadingsService.hideLoading();
         this.buscaVisualizados();
       });
@@ -51,7 +53,6 @@ export class VisualizarTemporadaPage implements OnInit {
 
   addVisualizado(id) {
     var novoVisualizado = [];
-
     if (localStorage.getItem('episodiosVisualizados')) {
       var arr = JSON.parse(localStorage.getItem('episodiosVisualizados'));
       for (var i = 0; i < arr.length; i++) {
@@ -62,6 +63,7 @@ export class VisualizarTemporadaPage implements OnInit {
         "usuarioId": this.usuario.id,
         "episodioId": id,
         "seriadoId": this.seriadoId,
+        "seasonNumber": this.seasonNumber,
         "temporadaId": this.temporadaId
       });
 
@@ -71,6 +73,7 @@ export class VisualizarTemporadaPage implements OnInit {
         "usuarioId": this.usuario.id,
         "episodioId": id,
         "seriadoId": this.seriadoId,
+        "seasonNumber": this.seasonNumber,
         "temporadaId": this.temporadaId
       });
 
@@ -138,12 +141,12 @@ export class VisualizarTemporadaPage implements OnInit {
         var qtdAssistidos = 0;
 
         for (var i = 0; i < arr.length; i++) {
-          if (arr[i].seriadoId == this.seriadoId && arr[i].temporadaId == this.temporadaId) {
+          if (arr[i].seriadoId == this.seriadoId && arr[i].seasonNumber == this.seasonNumber) {
             qtdAssistidos += 1;
           }
         }
 
-        if (qtdAssistidos == this.temporada.episodes.length) {
+        if (qtdAssistidos > 0 && qtdAssistidos == this.temporada.episodes.length) {
           this.tempFinalizada = true;
           this.toastsService.showToastSuccess("Todos os episódios foram assistidos!");
         } else {

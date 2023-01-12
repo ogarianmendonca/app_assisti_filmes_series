@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { FilmesService } from 'src/app/services/filmes.service';
 import { LoadingsService } from 'src/app/services/loadings.service';
 import { ToastsService } from 'src/app/services/toasts.service';
@@ -16,15 +17,18 @@ export class Tab2Page {
   public refresher;
   public isRefreshing = false;
   public infiniteScroll;
+  public urlOrigem;
 
   constructor(
     private filmesService: FilmesService,
     private loadingService: LoadingsService,
-    private toastsService: ToastsService
+    private toastsService: ToastsService,
+    private routerActivated: ActivatedRoute,
   ) {}
 
   ngOnInit(){
     this.buscarFilmes();
+    this.urlOrigem = this.routerActivated.snapshot['_routerState'].url;
   }
 
   doRefresh(event) {
