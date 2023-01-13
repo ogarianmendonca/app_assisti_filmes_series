@@ -1,0 +1,21 @@
+<ion-card *ngIf="posterPath" class="card" [ngStyle]="{
+  background: 'url('+ urlImagens + posterPath +') center',
+  'background-size': '145px'
+}">
+  <ion-card-header class="ion-text-right">
+    <ion-badge color="primary" class="radius-badge" [routerLink]="['/tabs/pages/',pages , action, id]">
+      <ion-icon class="icon-detalhes" name="add-outline"></ion-icon>
+    </ion-badge>
+  </ion-card-header>
+</ion-card>
+
+<ion-card *ngIf="posterPath == null" class="card" [ngStyle]="{
+  background: 'url(assets/img/sem_imagem_1.jpg) center',
+  'background-size': '145px'
+}">
+  <ion-card-header class="ion-text-right">
+    <ion-badge color="primary" class="radius-badge" [routerLink]="['/tabs/pages/',pages , action, id]">
+      <ion-icon class="icon-detalhes" name="add-outline"></ion-icon>
+    </ion-badge>
+  </ion-card-header>
+</ion-card>
