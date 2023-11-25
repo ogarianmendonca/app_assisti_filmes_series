@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoadingsService } from 'src/app/services/loadings.service';
 import { TendenciasService } from 'src/app/services/tendencias.service';
 
@@ -18,10 +19,11 @@ export class Tab1Page {
 
   constructor(
     private tendenciasService: TendenciasService,
-    private loadingService: LoadingsService
-  ) {}
+    private loadingService: LoadingsService,
+    private router: Router
+  ) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.buscarTendencias();
   }
 
@@ -51,19 +53,27 @@ export class Tab1Page {
 
         this.loadingService.hideLoading();
 
-        if (this.isRefreshing){
+        if (this.isRefreshing) {
           this.refresher.target.complete();
           this.isRefreshing = false;
         }
       }, error => {
         this.loadingService.hideLoading();
 
-        if (this.isRefreshing){
+        if (this.isRefreshing) {
           this.refresher.complete();
           this.isRefreshing = false;
         }
       });
 
     this.loadingService.hideLoading();
+  }
+
+  visualizarDetalhes(id, mediaType) {
+    if (mediaType == 'movie') {
+      this.router.navigate(['/tabs/pages/filmes/visualizar-filme', id]);
+    } else {
+      this.router.navigate(['/tabs/pages/seriados/visualizar-seriado', id]);
+    }
   }
 }

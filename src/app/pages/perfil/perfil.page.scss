@@ -15,6 +15,16 @@
     object-fit: cover;
 }
 
+.img-selecionada {
+    width: 124px;
+    height: 124px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    object-fit: cover;
+    margin-left: 25%;
+}
+
 .card-header { 
     margin-top: -75px;
     background: white;

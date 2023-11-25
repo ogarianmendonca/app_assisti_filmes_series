@@ -18,6 +18,7 @@ export class PerfilPage implements OnInit {
   user: Usuario;
   imagem: Set<File>;
   formularioUsuario: FormGroup;
+  selectedImageURL: string = '';
 
   constructor(
     private authService: AuthService,
@@ -57,7 +58,16 @@ export class PerfilPage implements OnInit {
   }
 
   carregarImagem(event: any) {
-    this.imagem = event.target.files;
+    const imagem: File = event.target.files[0];
+    if (imagem) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.selectedImageURL = e.target.result;
+      };
+      reader.readAsDataURL(imagem);
+
+      this.imagem = event.target.files;
+    }
   }
 
   editarUsuario() {
@@ -83,7 +93,7 @@ export class PerfilPage implements OnInit {
     } else {
       this.usuarioService.uploadImagem(this.imagem).subscribe((resImg: any) => {
         this.formularioUsuario.value.imagem = resImg.imagem;
-
+        this.selectedImageURL = '';
         this.usuarioService.editarUsuario(id, this.formularioUsuario.value).subscribe((resp: Usuario) => {
           this.toastsService.showToastSuccess('Perfil editado com sucesso!');
           this.loadingsService.hideLoading();
@@ -92,6 +102,8 @@ export class PerfilPage implements OnInit {
           this.toastsService.showToastWarning('Erro ao editar perfil!');
           this.loadingsService.hideLoading();
         });
+      }, (err) => {
+         console.log(err);
       });
     }
   }

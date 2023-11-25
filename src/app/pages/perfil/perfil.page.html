@@ -98,6 +98,10 @@
           </label>
         </ion-item>
 
+        <ion-item class="ion-text-center" *ngIf="selectedImageURL">
+          <img class="img-selecionada" [src]="selectedImageURL">
+        </ion-item>
+
         <br>
         <ion-button type="submit" [disabled]="formularioUsuario.invalid" shape="round" color="success" expand="full">
           Salvar

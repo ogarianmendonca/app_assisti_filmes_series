@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card-principal',
@@ -24,8 +25,12 @@ export class CardPrincipalComponent implements OnInit {
   @Input()
   urlOrigem: string;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  visualizar(pages, action, id) {
+    this.router.navigate(['/tabs/pages/', pages, action, id]);
   }
 }

@@ -21,7 +21,7 @@
         <ion-card class="card-filmes" [ngStyle]="{
           background: 'url('+ urlImagens + tendencia.poster_path + ') center',
           'background-size': '385px'
-        }">
+        }" (click)="visualizarDetalhes(tendencia?.id, tendencia.media_type)">
           <ion-card-header class="ion-text-right">
             <ion-badge *ngIf="tendencia.media_type == 'movie'" color="primary" class="radius-badge"
             [routerLink]="['/tabs/pages/filmes/visualizar-filme', tendencia?.id]">

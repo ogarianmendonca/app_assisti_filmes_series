@@ -1,7 +1,7 @@
 <ion-card *ngIf="posterPath" class="card" [ngStyle]="{
   background: 'url('+ urlImagens + posterPath +') center',
   'background-size': '145px'
-}">
+}" (click)="visualizar(pages, action, id)">
   <ion-card-header class="ion-text-right">
     <ion-badge color="primary" class="radius-badge" [routerLink]="['/tabs/pages/',pages , action, id]">
       <ion-icon class="icon-detalhes" name="add-outline"></ion-icon>
@@ -14,7 +14,7 @@
   'background-size': '145px'
 }">
   <ion-card-header class="ion-text-right">
-    <ion-badge color="primary" class="radius-badge" [routerLink]="['/tabs/pages/',pages , action, id]">
+    <ion-badge color="primary" class="radius-badge" [routerLink]="['/tabs/pages/', pages, action, id]">
       <ion-icon class="icon-detalhes" name="add-outline"></ion-icon>
     </ion-badge>
   </ion-card-header>

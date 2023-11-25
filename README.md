@@ -4,7 +4,7 @@ Projeto Livre - Aplicativo móvel com Ionic 5 e Angular 9
 
 #### Instruções
     1- Conexão com banco de dados em src/environments/*
-    2- npm install
+    2- npm install (caso erro de descontinuado usar npm install --legacy-peer-deps)
     3- ionic serve
     4- ionic build
     5- ionic capacitor add android
